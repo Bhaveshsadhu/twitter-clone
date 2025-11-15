@@ -1,0 +1,104 @@
+### BASE URL
+@baseUrl = http://localhost:5000/api
+
+### ---------- AUTH ROUTES ----------
+
+### REGISTER
+POST {{baseUrl}}/auth/register
+# Content-Type: application/json
+
+# {
+#   "name": "Bhavesh",
+#   "username": "bhavesh123",
+#   "email": "bhavesh@example.com",
+#   "password": "123456"
+# }
+
+###
+
+### LOGIN
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "bhavesh@example.com",
+  "password": "123456"
+}
+
+###
+
+### LOGOUT
+POST {{baseUrl}}/auth/logout
+
+###
+
+### GET CURRENT USER (requires cookie)
+GET {{baseUrl}}/auth/me
+
+---
+
+# ---------- USER ROUTES ----------
+
+### GET USER BY USERNAME
+GET {{baseUrl}}/users/bhavesh123
+
+###
+
+### FOLLOW / UNFOLLOW USER
+PUT {{baseUrl}}/users/follow/USER_ID_HERE
+
+###
+
+### UPDATE PROFILE (name, bio, avatar, cover-photo)
+PUT {{baseUrl}}/users/update
+Content-Type: application/json
+
+{
+  "name": "Bhavesh Updated",
+  "bio": "Full Stack Developer",
+  "location": "Sydney"
+}
+
+---
+
+# ---------- TWEET ROUTES ----------
+
+### CREATE TWEET (text only)
+POST {{baseUrl}}/tweets
+Content-Type: application/json
+
+{
+  "text": "This is my first tweet from Twitter Clone!"
+}
+
+###
+
+### CREATE TWEET WITH IMAGE
+POST {{baseUrl}}/tweets
+Content-Type: application/json
+
+{
+  "text": "Tweet with image",
+  "image": "https://fake-cloudinary-url.com/image.jpg"
+}
+
+###
+
+### GET ALL TWEETS (timeline)
+GET {{baseUrl}}/tweets
+
+###
+
+### GET TWEETS FROM A USER
+GET {{baseUrl}}/tweets/user/USER_ID_HERE
+
+###
+
+### LIKE / UNLIKE TWEET
+PUT {{baseUrl}}/tweets/like/TWEET_ID_HERE
+
+###
+
+### DELETE TWEET
+DELETE {{baseUrl}}/tweets/TWEET_ID_HERE
+
