@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './dbconfig/db.config.js';
 import authRoutes from './routes/auth.routes.js';
+import { errorHandler } from './middlewares/errorMiddleware/errorMiddleware.js';
 
 const app = express();
 dotenv.config();
@@ -22,3 +23,6 @@ app.listen(PORT, () => {
 
 // Define your routes here
 app.use('/api/auth', authRoutes);
+
+// Global error handler 
+app.use(errorHandler);
